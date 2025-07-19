@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Marino's Bakeshop</title>
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+  />
+  <link rel="stylesheet" href="css/Main.css" />
+  <link rel="stylesheet" href="css/Login_Register.css" />
+</head>
+<body>
+  <header class="header">
+    <a href="#" class="logo small-logo">
+      <img src="img/about-img.jpg" alt="logo" /> Marino's Bakeshop
+    </a>
+    <nav class="navbar">
+      <a href="index.html">Home</a>
+    </nav>
+  </header>
+
+  <section>
+    <div class="form-box">
+      <div class="form-value">
+
+        <form id="loginForm">
+          <h2>Login</h2>
+          <div class="inputbox">
+            <ion-icon name="mail-outline"></ion-icon>
+            <input type="email" id="email" name="email" required />
+            <label for="email" class="small-label">Email</label>
+          </div>
+          <div class="inputbox">
+            <ion-icon name="lock-closed-outline"></ion-icon>
+            <input type="password" id="password" name="password" required />
+            <label for="password" class="small-label">Password</label>
+          </div>
+          <button type="submit">Log in</button>
+          <div class="register">
+            <p>Don't have an account? <a href="Register.html">Register Here</a></p>
+          </div>
+        </form>
+      </div> 
+    </div>
+  </section>
+
+  <section class="footer">
+    <div class="box-container">
+      <div class="box">
+        <h3>follow us</h3>
+        <a href="https://www.facebook.com/marinos.bakeshop"
+          ><i class="fab fa-facebook-f"></i> Facebook</a
+        >
+      </div>
+    </div>
+  </section>
+
+  <section class="credit">Coded by Fernando, Harvey V.</section>
+  
+    <script src="js/index.js"></script>
+  <script src="js/Login.js"></script>
+</body>
+</html>
+  

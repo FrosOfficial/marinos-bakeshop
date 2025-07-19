@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marino's Bakeshop</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/Main.css">
+    <link rel="stylesheet" href="css/Shop.css">
+    <link rel="stylesheet" href="css/ShopMenu.css">
+</head>
+<body>
+
+    <header class="header">
+        <div class="logo small-logo"> 
+            <img src="img/about-img.jpg"> Marino's Bakeshop 
+        </div>        
+        <nav class="navbar">
+            <a href="index.html">Home</a>
+            <a href="Shop.html">Shop</a>
+            <a href="About.html">About</a>
+            <a href="Reviews.html">Reviews</a>
+            <a href="Gallery.html">Gallery</a>
+            <a href="Contact.html">Contact</a>
+        </nav>
+
+        <!-- Fixed icons section -->
+        <div class="icons">
+            <div id="menu-btn" class="fas fa-bars"></div> 
+            <a href="Cart.html">
+                <div id="cart-btn" class="fas fa-shopping-cart">
+                    <span id="cart-quantity">0</span>
+                </div>
+            </a>
+            <a href="Login.html">
+                <div id="login-btn" class="fas fa-user"></div>
+            </a>
+        </div>
+    </header>
+
+    <section id="shop"></section>
+    <div class="heading" id="Shop">
+        <h1>our shop</h1>
+    </div>
+
+    <section class="category">
+
+        <h1 class="title"> our <span>categories</span> & <span>products</span> </h1>
+
+        <div class="box-container">
+
+            <a href="#" class="box" id="cakesLink">
+                <img decoding="async" src="img/cat-1.png" alt="">
+                <h3>Cakes</h3>
+            </a>
+
+            <a href="#" class="box" id="cookiesLink">
+                <img decoding="async" src="img/cat-2.png" alt="">
+                <h3>Cookies</h3>
+            </a>
+
+            <a href="#" class="box" id="sweetsLink">
+                <img decoding="async" src="img/cat-3.png" alt="">
+                <h3>Sweets</h3>
+            </a>
+
+        </div>
+    </section>
+
+    <div class="zoomedImageContainer" onclick="hideZoomedImage()">
+        <img id="zoomedImage" src="" alt="Zoomed Image">
+    </div>
+
+    <section class="products">
+
+        <h1 class="title"> <span></span> </h1>
+
+        <div class="box-container">
+
+            <div class="box hidden" id="YemaCakeSpecial">
+                <div class="icons">
+                    <a href="#" class="fas fa-shopping-cart" onclick="showModal('Yema Cake Special', 480)"></a>
+                    <a href="#" class="fas fa-eye" onclick="zoomImage('img/product-1.jpg')"></a>
+                </div>
+                <div class="img">
+                    <img decoding="async" src="img/product-1.jpg" alt="">
+                </div>
+                    <div class="content">
+                        <h3>Yema Cake Special</h3>
+                    <div class="price">₱480</div>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="box hidden" id="YemaCakeTub">
+                <div class="icons">
+                  <a href="#" class="fas fa-shopping-cart" onclick="showModal('Yema Cake Tub', 350)"></a>
+                  <a href="#" class="fas fa-eye" onclick="zoomImage('img/product-2.jpg')"></a>
+                </div>
+                <div class="img">
+                  <img decoding="async" src="img/product-2.jpg" alt="">
+                </div>
+                <div class="content">
+                  <h3>Yema Cake Tub</h3>
+                  <div class="price">₱350</div>
+                  <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                  </div>
+                </div>
+              </div>
+            
+            <div class="box hidden" id="caramelBarBox">
+                <div class="icons">
+                    <a href="#" class="fas fa-shopping-cart" onclick="showModal('Caramel Bar Box', 15)"></a>
+                    <a href="#" class="fas fa-eye" onclick="zoomImage('img/product-3.jpg')"></a>
+                </div>
+                <div class="img">
+                    <img decoding="async" src="img/product-3.jpg" alt="">
+                </div>
+                <div class="content">
+                    <h3>Caramel Bar</h3>
+                    <div class="price">₱15 per pc</div>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="box hidden" id="ChiffonCake">
+                <div class="icons">
+                    <a href="#" class="fas fa-shopping-cart" onclick="showModal('Chiffon Cake', 250)" ></a>
+                    <a href="#" class="fas fa-eye" onclick="zoomImage('img/product-4.jpg')"></a>
+                </div>
+                <div class="img">
+                    <img decoding="async" src="img/product-4.jpg" alt="">
+                </div>
+                <div class="content">
+                    <h3>Chiffon Cake</h3>
+                    <div class="price">₱250</div>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="box hidden" id="CustardCake">
+                <div class="icons">
+                    <a href="#" class="fas fa-shopping-cart" onclick="showModal('Custard Cake', 300)"></a>
+                    <a href="#" class="fas fa-eye" onclick="zoomImage('img/product-5.jpg')"></a>
+                </div>
+                <div class="img">
+                    <img decoding="async" src="img/product-5.jpg" alt="">
+                </div>
+                <div class="content">
+                    <h3>Custard Cake</h3>
+                    <div class="price">₱300</div>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="box hidden" id="CrinklesInBoxed">
+                <div class="icons">
+                    <a href="#" class="fas fa-shopping-cart" onclick="showModal('Crinkles In Boxed', 70)"></a>
+                    <a href="#" class="fas fa-eye" onclick="zoomImage('img/product-6.jpg')"></a>
+                </div>
+                <div class="img">
+                    <img decoding="async" src="img/product-6.jpg" alt="">
+                </div>
+                <div class="content">
+                    <h3>Crinkles in Boxed</h3>
+                    <div class="price">₱70 per 8pcs</div>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="box hidden" id="CrinklesInPlastic">
+                <div class="icons">
+                    <a href="#" class="fas fa-shopping-cart" onclick="showModal('Crinkles In Plastic', 40)"></a>
+                    <a href="#" class="fas fa-eye" onclick="zoomImage('img/product-7.jpg')"></a>
+                </div>
+                <div class="img">
+                    <img decoding="async" src="img/product-7.jpg" alt="">
+                </div>
+                <div class="content">
+                    <h3>Crinkles in Plastic</h3>
+                    <div class="price">₱40 per 6pcs</div>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="box hidden" id="ChocoChipsCookiesInBoxed">
+                <div class="icons">
+                    <a href="#" class="fas fa-shopping-cart" onclick="showModal('Choco Chips Cookies In Boxed', 100)"></a>
+                    <a href="#" class="fas fa-eye" onclick="zoomImage('img/product-8.jpg')"></a>
+                </div>
+                <div class="img">
+                    <img decoding="async" src="img/product-8.jpg" alt="">
+                </div>
+                <div class="content">
+                    <h3>Choco Chips Cookies in Boxed</h3>
+                    <div class="price">₱100 per 8pcs</div>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="box hidden" id="ChocoChipsCookiesInPlastic">
+                <div class="icons">
+                    <a href="#" class="fas fa-shopping-cart" onclick="showModal('Choco Chips Cookies In Plastic', 70)"></a>
+                    <a href="#" class="fas fa-eye" onclick="zoomImage('img/product-9.jpg')"></a>
+                </div>
+                <div class="img">
+                    <img decoding="async" src="img/product-9.jpg" alt="">
+                </div>
+                <div class="content">
+                    <h3>Choco Chips Cookies in Plastic</h3>
+                    <div class="price">₱70 per 6pcs</div>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="box hidden" id="EggPie">
+                <div class="icons">
+                    <a href="#" class="fas fa-shopping-cart" onclick="showModal('Egg Pie', 260)"></a>
+                    <a href="#" class="fas fa-eye" onclick="zoomImage('img/product-10.jpg')"></a>
+                </div>
+                <div class="img">
+                    <img decoding="async" src="img/product-10.jpg" alt="">
+                </div>
+                <div class="content">
+                    <h3>Egg Pie</h3>
+                    <div class="price">₱260</div>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+            
+    </section>
+
+    <!-- Modal Overlay -->
+    <div class="modal-overlay" id="modalOverlay" onclick="hideModal()"></div>
+
+    <!-- Improved Modal -->
+    <div class="modal" id="cartModal">
+        <div class="modal-header">
+            <button class="close-btn" onclick="hideModal()">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="product-icon">
+                <i class="fas fa-birthday-cake"></i>
+            </div>
+            <div class="product-name" id="productName">Product Name</div>
+            <div class="product-price">₱<span id="unitPrice">0</span></div>
+        </div>
+
+        <div class="modal-content">
+            <div class="quantity-section">
+                <div class="quantity-label">Select Quantity</div>
+                <div class="quantity-controls">
+                    <button class="quantity-btn" onclick="decreaseQuantity()">
+                        <i class="fas fa-minus"></i>
+                    </button>
+                    <div class="quantity-display" id="quantityDisplay">1</div>
+                    <button class="quantity-btn" onclick="increaseQuantity()">
+                        <i class="fas fa-plus"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="total-section">
+                <div class="total-label">Total Cost</div>
+                <div class="total-amount">
+                    <span class="currency">₱</span>
+                    <span id="totalCost">0</span>
+                </div>
+            </div>
+
+            <div class="action-buttons">
+                <button class="btn btn-primary" onclick="addToCart()">
+                    <i class="fas fa-cart-plus"></i>
+                    Add to Cart
+                </button>
+                <button class="btn btn-secondary" onclick="hideModal()">
+                    <i class="fas fa-times"></i>
+                    Cancel
+                </button>
+            </div>
+
+            <div class="success-animation" id="successMessage">
+                <i class="fas fa-check-circle"></i>
+                Added to cart successfully!
+            </div>
+        </div>
+    </div>
+
+    <section class="footer">
+        <div class="box-container">
+            <div class="box">
+                <h3>follow us</h3>
+                <a href="https://www.facebook.com/marinos.bakeshop"> <i class="fab fa-facebook-f"></i> facebook </a>
+            </div> 
+        </div>
+    </section>
+
+    <section class="credit">Coded by Fernando, Harvey V.</section>
+
+    <!-- Load scripts in proper order -->
+    <script src="js/ShopMenu.js"></script>
+    <script src="js/Shop.js"></script>
+    <script src="js/index.js"></script>
+
+</body>
+</html>

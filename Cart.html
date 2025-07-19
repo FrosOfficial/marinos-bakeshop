@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marino's Bakeshop</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/Main.css">
+</head>
+<body>
+    
+    <header class="header">
+        <div class="logo small-logo"> 
+            <img src="img/about-img.jpg"> Marino's Bakeshop 
+        </div>        
+        <nav class="navbar">
+            <a href="index.html">Home</a>
+            <a href="Shop.html">Shop</a>
+            <a href="About.html">About</a>
+            <a href="Reviews.html">Reviews</a>
+            <a href="Gallery.html">Gallery</a>
+            <a href="Contact.html">Contact</a>
+        </nav>
+
+        <div class="icons">
+            <a href="Cart.html">
+                <div id="cart-btn" class="fas fa-shopping-cart">
+                    <span id="cart-quantity">0</span>
+                </div>
+            </a>
+            <a href="Login.html">
+                <div id="login-btn" class="fas fa-user"></div>
+            </a>
+        </div>
+    </header>
+
+    <section id="contact"></section>
+    
+    <div class="heading">
+        <h1>Orders</h1>
+    </div>
+    
+    <section class="orders"></section>
+
+    <div class="cart-container">
+        <h1>Your Cart</h1>
+        <div id="cart-items"></div>
+        <div id="cart-total-container">
+            <h2>Total: <span id="cart-total">₱0</span></h2>
+            <button id="checkout-btn">Checkout</button>
+        </div>        
+    </div>
+
+    <section class="footer">
+        <div class="box-container">
+            <div class="box">
+                <h3>follow us</h3>
+                <a href="https://www.facebook.com/marinos.bakeshop"> 
+                    <i class="fab fa-facebook-f"></i> Facebook 
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="credit">Coded by Fernando, Harvey V.</section>
+
+    <!-- JavaScript Files -->
+    <script src="js/Shop.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/Cart.js"></script>
+    <script src="server.js"></script>
+</body>
+</html>
