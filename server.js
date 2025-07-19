@@ -23,10 +23,11 @@ app.use(session({
 
 // MySQL connection
 const db = mysql.createConnection({
-  host: 'localhost',
+  host: 'shinkansen.proxy.rlwy.net',
   user: 'root',
-  password: 'ForCoding1001!',
-  database: 'marinos_bakeshop'
+  password: 'mwpWDCmExPruzawADNnDDjwvqjXsZUlj',
+  database: 'railway',
+  port: '32342'
 });
 
 db.connect(err => {
