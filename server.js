@@ -8,7 +8,7 @@ const app = express();
 
 // CORS and JSON body parsing
 app.use(cors({
-  origin: 'http://127.0.0.1:5500',  // adjust to your frontend origin
+  origin: 'https://marinosbakeshop.netlify.app',  // adjust to your frontend origin
   credentials: true
 }));
 app.use(bodyParser.json());
