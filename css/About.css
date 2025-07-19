@@ -1,0 +1,42 @@
+/* =====================================================
+   ABOUT SECTION
+   ===================================================== */
+.about {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.about .img {
+    flex: 1 1 40rem;
+}
+
+.about .img img {
+    box-shadow: var(--shadow);
+    border: var(--border);
+    width: 350px;
+    height: 350px;
+}
+
+.about .content {
+    flex: 1 1 40rem;
+}
+
+.about .content span {
+    color: var(--text-light);
+    font-size: 2.5rem;
+}
+
+.about .content h3 {
+    color: var(--text-dark);
+    font-size: 3rem;
+    padding-top: 0.5rem;
+}
+
+.about .content p {
+    color: var(--text-dark);
+    font-size: 1.4rem;
+    line-height: 2;
+    padding: 1rem 0;
+}
