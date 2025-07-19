@@ -159,7 +159,7 @@ async function handleReviewSubmission(event) {
     console.log('Submitting review:', reviewData);
     
     try {
-        const response = await fetch('marinos-bakeshop-production.up.railway.app/api/reviews', {
+        const response = await fetch('https://marinos-bakeshop-production.up.railway.app/api/reviews', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -214,9 +214,9 @@ async function loadReviews() {
     if (reviewsStats) reviewsStats.style.display = 'none';
     
     try {
-        console.log('Fetching from: marinos-bakeshop-production.up.railway.app/api/reviews');
+        console.log('Fetching from: https://marinos-bakeshop-production.up.railway.app/api/reviews');
         
-        const response = await fetch('marinos-bakeshop-production.up.railway.app/api/reviews', {
+        const response = await fetch('https://marinos-bakeshop-production.up.railway.app/api/reviews', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -447,11 +447,6 @@ document.addEventListener('DOMContentLoaded', function() {
 // Helper function to manually refresh login status (can be called from other scripts)
 function refreshLoginStatus() {
     checkUserLoginStatus();
-}
-
-// Add test button in development
-if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
-    document.addEventListener('DOMContentLoaded', addServerTestButton);
 }
 
 // ===========================================

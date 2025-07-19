@@ -234,7 +234,7 @@ document.getElementById("contactForm").addEventListener("submit", async function
     
     try {
         // Send data to server
-        const response = await fetch('marinos-bakeshop-production.up.railway.app/api/contact', {
+        const response = await fetch('https://marinos-bakeshop-production.up.railway.app/api/contact', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
