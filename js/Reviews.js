@@ -159,7 +159,7 @@ async function handleReviewSubmission(event) {
     console.log('Submitting review:', reviewData);
     
     try {
-        const response = await fetch('http://localhost:3000/api/reviews', {
+        const response = await fetch('marinos-bakeshop-production.up.railway.app/api/reviews', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -214,9 +214,9 @@ async function loadReviews() {
     if (reviewsStats) reviewsStats.style.display = 'none';
     
     try {
-        console.log('Fetching from: http://localhost:3000/api/reviews');
+        console.log('Fetching from: marinos-bakeshop-production.up.railway.app/api/reviews');
         
-        const response = await fetch('http://localhost:3000/api/reviews', {
+        const response = await fetch('marinos-bakeshop-production.up.railway.app/api/reviews', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
