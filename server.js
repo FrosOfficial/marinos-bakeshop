@@ -51,6 +51,53 @@ app.post('/register', (req, res) => {
   });
 });
 
+// Update user profile endpoint
+app.post('/api/update-profile', (req, res) => {
+  const { id, fullname, email, password, gender } = req.body;
+
+  if (!id) {
+    return res.status(400).json({ success: false, message: 'User ID is required' });
+  }
+
+  const updates = [];
+  const values = [];
+
+  if (fullname) {
+    updates.push('fullname = ?');
+    values.push(fullname);
+  }
+  if (email) {
+    updates.push('email = ?');
+    values.push(email);
+  }
+  if (password) {
+    updates.push('password = ?'); // Consider hashing in the future
+    values.push(password);
+  }
+  if (gender) {
+    updates.push('gender = ?');
+    values.push(gender);
+  }
+
+  if (updates.length === 0) {
+    return res.status(400).json({ success: false, message: 'No fields to update' });
+  }
+
+  values.push(id); // Add `id` for WHERE clause
+
+  const sql = `UPDATE users SET ${updates.join(', ')} WHERE id = ?`;
+
+  db.query(sql, values, (err, result) => {
+    if (err) {
+      console.error('Error updating user:', err);
+      return res.status(500).json({ success: false, message: 'Database error' });
+    }
+
+    return res.json({ success: true, message: 'Profile updated successfully' });
+  });
+});
+
+
 // Login endpoint
 app.post('/api/login', async (req, res) => {
   const { email, password } = req.body;
