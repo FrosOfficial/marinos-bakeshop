@@ -3,6 +3,8 @@ const mysql = require('mysql2');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const session = require('express-session');
+require('dotenv').config();
+
 
 const app = express();
 
@@ -23,12 +25,13 @@ app.use(session({
 
 // MySQL connection
 const db = mysql.createConnection({
-  host: 'shinkansen.proxy.rlwy.net',
-  user: 'root',
-  password: 'mwpWDCmExPruzawADNnDDjwvqjXsZUlj',
-  database: 'railway',
-  port: '32342'
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
+  port: process.env.DB_PORT
 });
+
 
 db.connect(err => {
   if (err) {
