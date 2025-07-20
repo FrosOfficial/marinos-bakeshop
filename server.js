@@ -53,10 +53,10 @@ app.post('/register', (req, res) => {
 
 // Update user profile endpoint
 app.post('/api/update-profile', (req, res) => {
-  const { id, fullname, email, password, gender } = req.body;
+  const { originalEmail, fullname, email, password, gender } = req.body;
 
-  if (!id) {
-    return res.status(400).json({ success: false, message: 'User ID is required' });
+  if (!originalEmail) {
+    return res.status(400).json({ success: false, message: 'Original email is required' });
   }
 
   const updates = [];
@@ -71,7 +71,7 @@ app.post('/api/update-profile', (req, res) => {
     values.push(email);
   }
   if (password) {
-    updates.push('password = ?'); // Consider hashing in the future
+    updates.push('password = ?');
     values.push(password);
   }
   if (gender) {
@@ -83,9 +83,9 @@ app.post('/api/update-profile', (req, res) => {
     return res.status(400).json({ success: false, message: 'No fields to update' });
   }
 
-  values.push(id); // Add `id` for WHERE clause
+  values.push(originalEmail);
 
-  const sql = `UPDATE users SET ${updates.join(', ')} WHERE id = ?`;
+  const sql = `UPDATE users SET ${updates.join(', ')} WHERE email = ?`;
 
   db.query(sql, values, (err, result) => {
     if (err) {
@@ -96,6 +96,7 @@ app.post('/api/update-profile', (req, res) => {
     return res.json({ success: true, message: 'Profile updated successfully' });
   });
 });
+
 
 
 // Login endpoint
