@@ -23,6 +23,7 @@ app.use(session({
 
 // MySQL connection
 require('dotenv').config();
+console.log("DB_HOST is:", process.env.DB_HOST);
 const db = mysql.createConnection({
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
