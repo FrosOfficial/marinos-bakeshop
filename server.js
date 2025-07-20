@@ -3,8 +3,6 @@ const mysql = require('mysql2');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const session = require('express-session');
-require('dotenv').config();
-
 
 const app = express();
 
@@ -24,6 +22,9 @@ app.use(session({
 }));
 
 // MySQL connection
+
+require('dotenv').config();
+
 const db = mysql.createConnection({
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
@@ -31,7 +32,6 @@ const db = mysql.createConnection({
   database: process.env.DB_NAME,
   port: process.env.DB_PORT
 });
-
 
 db.connect(err => {
   if (err) {
