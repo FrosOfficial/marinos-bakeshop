@@ -159,7 +159,7 @@ async function handleReviewSubmission(event) {
     console.log('Submitting review:', reviewData);
     
     try {
-        const response = await fetch('https://marinosbakeshop.netlify.app/api/reviews', {
+        const response = await fetch('/.netlify/functions/reviews', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -218,9 +218,9 @@ async function loadReviews() {
     const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 seconds
 
     try {
-        console.log('Fetching from: https://marinosbakeshop.netlify.app/api/reviews');
+        console.log('Fetching from: /.netlify/functions/reviews');
 
-        const response = await fetch('https://marinosbakeshop.netlify.app/api/reviews', {
+        const response = await fetch('/.netlify/functions/reviews', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',

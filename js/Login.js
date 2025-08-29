@@ -30,7 +30,7 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
   try {
     setLoading(true);
 
-    const response = await fetch('https://marinosbakeshop.netlify.app/api/login', {
+    const response = await fetch('/.netlify/functions/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -251,7 +251,7 @@ async function saveProfileChanges(formBox, currentUser) {
     console.log('Update payload:', updateData);
 
     // Send update request with all changed fields
-    const response = await fetch('https://marinosbakeshop.netlify.app/api/update-profile', {
+    const response = await fetch('/.netlify/functions/update-profile', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

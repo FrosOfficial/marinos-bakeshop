@@ -234,7 +234,7 @@ document.getElementById("contactForm").addEventListener("submit", async function
     
     try {
         // Send data to server
-        const response = await fetch('https://marinosbakeshop.netlify.app/api/contact', {
+        const response = await fetch('/.netlify/functions/contact', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

@@ -19,7 +19,7 @@ document.getElementById('registerForm').addEventListener('submit', async (e) => 
   setLoading(true);
 
   try {
-    const res = await fetch('https://marinosbakeshop.netlify.app/register', {
+    const res = await fetch('/.netlify/functions/register', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ fullname, email, password })
