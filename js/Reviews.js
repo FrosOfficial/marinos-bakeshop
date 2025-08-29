@@ -159,7 +159,7 @@ async function handleReviewSubmission(event) {
     console.log('Submitting review:', reviewData);
     
     try {
-        const response = await fetch('https://marinos-bakeshop-production.up.railway.app/api/reviews', {
+        const response = await fetch('https://marinosbakeshop.netlify.app/api/reviews', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -212,29 +212,34 @@ async function loadReviews() {
     if (reviewsLoading) reviewsLoading.style.display = 'block';
     if (reviewsList) reviewsList.innerHTML = '';
     if (reviewsStats) reviewsStats.style.display = 'none';
-    
+
+    // Timeout controller (works in browser)
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 seconds
+
     try {
-        console.log('Fetching from: https://marinos-bakeshop-production.up.railway.app/api/reviews');
-        
-        const response = await fetch('https://marinos-bakeshop-production.up.railway.app/api/reviews', {
+        console.log('Fetching from: https://marinosbakeshop.netlify.app/api/reviews');
+
+        const response = await fetch('https://marinosbakeshop.netlify.app/api/reviews', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
             },
-            // Add timeout to catch hanging requests
-            signal: AbortSignal.timeout(10000) // 10 second timeout
+            signal: controller.signal
         });
-        
+
+        clearTimeout(timeoutId); // Stop timeout if request succeeded
+
         console.log('Load reviews response status:', response.status);
         console.log('Load reviews response ok:', response.ok);
-        
+
         if (!response.ok) {
             throw new Error(`HTTP ${response.status}: ${response.statusText}`);
         }
-        
+
         const data = await response.json();
         console.log('Load reviews response data:', data);
-        
+
         if (data.success) {
             console.log('Reviews loaded successfully:', data.reviews.length, 'reviews');
             displayReviews(data.reviews);
@@ -245,21 +250,17 @@ async function loadReviews() {
                 reviewsList.innerHTML = `<div class="no-reviews">Server Error: ${data.message || 'Failed to load reviews.'}</div>`;
             }
         }
-        
     } catch (error) {
-        console.error('Error loading reviews:', error);
-        
-        // More specific error messages
-        let errorMessage = 'Network error. Unable to load reviews.';
-        
-        if (error.name === 'TypeError' && error.message.includes('fetch')) {
-            errorMessage = 'Cannot connect to server. Please check if the server is running on port 3000.';
-        } else if (error.name === 'AbortError') {
-            errorMessage = 'Request timed out. Server may be unresponsive.';
+        clearTimeout(timeoutId);
+
+        let errorMessage = 'Unable to load reviews.';
+        if (error.name === 'AbortError') {
+            errorMessage = 'Request timed out. Please try again.';
         } else if (error.message.includes('HTTP')) {
             errorMessage = `Server error: ${error.message}`;
         }
-        
+
+        console.error('Error loading reviews:', error);
         if (reviewsList) {
             reviewsList.innerHTML = `
                 <div class="no-reviews" style="color: #e74c3c;">
@@ -276,6 +277,7 @@ async function loadReviews() {
         if (reviewsLoading) reviewsLoading.style.display = 'none';
     }
 }
+
 
 // Display reviews in the UI
 function displayReviews(reviews) {

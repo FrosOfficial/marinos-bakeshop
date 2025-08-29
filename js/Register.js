@@ -19,7 +19,7 @@ document.getElementById('registerForm').addEventListener('submit', async (e) => 
   setLoading(true);
 
   try {
-    const res = await fetch('https://marinos-bakeshop-production.up.railway.app/register', {
+    const res = await fetch('https://marinosbakeshop.netlify.app/register', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ fullname, email, password })
@@ -45,3 +45,5 @@ document.getElementById('registerForm').addEventListener('submit', async (e) => 
     submitButton.innerHTML = isLoading ? spinner : 'Register';
   }
 });
+
+
