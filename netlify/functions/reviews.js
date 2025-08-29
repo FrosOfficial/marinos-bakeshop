@@ -8,11 +8,11 @@ export async function handler(event) {
     // Handle GET request - fetch all reviews
     if (event.httpMethod === "GET") {
       const reviews = await sql`
-        SELECT id, user_id, user_email, fullname, rating, comment, created_at
+        SELECT id, user_id, user_email, user_fullname AS fullname, rating, comment, created_at
         FROM reviews
         ORDER BY created_at DESC
       `;
-      
+
       return {
         statusCode: 200,
         body: JSON.stringify({ success: true, reviews }),
@@ -38,11 +38,14 @@ export async function handler(event) {
         };
       }
 
-      // Insert review into database
+      // Convert userId and rating to numbers
+      const userIdNum = Number(userId);
+      const ratingNum = Number(rating);
+
       const [newReview] = await sql`
-        INSERT INTO reviews (user_id, user_email, fullname, rating, comment)
-        VALUES (${userId}, ${userEmail}, ${userFullname}, ${rating}, ${comment})
-        RETURNING id, user_id, user_email, fullname, rating, comment, created_at
+        INSERT INTO reviews (user_id, user_email, user_fullname, rating, comment)
+        VALUES (${userIdNum}, ${userEmail}, ${userFullname}, ${ratingNum}, ${comment})
+        RETURNING id, user_id, user_email, user_fullname AS fullname, rating, comment, created_at
       `;
 
       return {

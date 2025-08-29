@@ -5,10 +5,17 @@ const sql = neon(process.env.DATABASE_URL);
 
 export async function handler(event) {
   try {
-    const data = JSON.parse(event.body);
+    if (event.httpMethod !== "POST") {
+      return {
+        statusCode: 405,
+        body: JSON.stringify({ success: false, message: "Method not allowed." }),
+      };
+    }
 
-    // Basic validation
+    const data = JSON.parse(event.body);
     const { name, email, number, subject, message, userId, userEmail, userFullname } = data;
+
+    // Validate required fields
     if (!name || !email || !number || !subject || !message) {
       return {
         statusCode: 400,
@@ -16,23 +23,24 @@ export async function handler(event) {
       };
     }
 
-    // Optionally, validate email and phone formats here if needed
-
     // Insert contact message into database
-    await sql`
-      INSERT INTO contacts (name, email, number, subject, message, user_id, user_email, user_fullname)
-      VALUES (${name}, ${email}, ${number}, ${subject}, ${message}, ${userId}, ${userEmail}, ${userFullname})
+    const [newMessage] = await sql`
+      INSERT INTO contact_messages 
+        (name, email, phone, subject, message, user_id, user_email, user_fullname)
+      VALUES 
+        (${name}, ${email}, ${number}, ${subject}, ${message}, ${userId || null}, ${userEmail || null}, ${userFullname || null})
+      RETURNING id, name, email, phone, subject, message, user_id, user_email, user_fullname, created_at, status
     `;
 
     return {
-      statusCode: 200,
-      body: JSON.stringify({ success: true, message: "Message sent successfully!" }),
+      statusCode: 201,
+      body: JSON.stringify({ success: true, message: "Message sent successfully!", data: newMessage }),
     };
   } catch (err) {
-    console.error(err);
+    console.error("Contact function error:", err);
     return {
       statusCode: 500,
-      body: JSON.stringify({ success: false, message: "Server error." }),
+      body: JSON.stringify({ success: false, message: "Server error. Please try again later." }),
     };
   }
 }
